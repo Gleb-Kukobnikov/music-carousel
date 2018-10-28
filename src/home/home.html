@@ -1,0 +1,67 @@
+<div class="container mt-4  ">
+
+    <div class="form-row ">
+
+        <div class="col col-md">
+
+            <form class="form-inline">
+                <input class="form-control col-7" type="search" placeholder="country" aria-label="Search" data-ng-model="countryField">
+                <button class="btn btn-outline-success mt-0 mr-1 border-0 text-light col-3" type="submit" data-ng-click="srchCountry()"><span class="oi oi-magnifying-glass mr-1"></span></button>
+            </form>
+
+
+        </div>
+
+        <div class="col col-md">
+
+            <form class="form-inline">
+                <input class="form-control col-7" type="search" placeholder="songs" aria-label="Search" data-ng-model="songField">
+                <button class="btn btn-outline-success  col-3 border-0 text-light" type="submit" data-ng-click="srchSongs()"><span class="oi oi-magnifying-glass mr-1"></span></button>
+            </form>
+
+        </div>
+
+        <div class="col  col-md">
+
+            <form>
+
+                <select class="form-control" ng-model="songsLimit">
+                        <option value="" selected disabled>limit</option>
+                        <option value="4">4</option>
+                        <option value="8">8</option>
+                        <option value="16">16</option>
+                        <option value="32">32</option>
+                </select>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="container mt-2 ">
+    <p class="lead text-primary">Your search is:<span class="bg-primary text-white">{{" "+countryField + " " + songField}}</span> </p>
+</div>
+
+<div class="container mt-5">
+
+    <div class="row justify-content-between">
+
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3 flex-fill song-wrap" ng-repeat="y in songsData">
+
+            <hr class="mb-2 text-secondary song-space-line">
+
+            <picture>
+                <img class="img-fluid rounded" src="{{y.artworkUrl100}}" alt="AlbumImage">
+                <p class="mb-0">{{y.trackName}}</p>
+                <a class=" text-secondary mb-0" ui-sref="artists" ui-sref-active="active"><small class="artists-link">{{y.artistName}}</small></a>
+            </picture>
+
+            <hr class="mt-2 text-secondary song-space-line">
+
+        </div>
+
+    </div>
+
+</div>

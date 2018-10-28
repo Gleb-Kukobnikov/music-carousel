@@ -1,0 +1,30 @@
+<div class="container mt-4">
+
+    <form class="form-inline ">
+        <input class="form-control col-3" type="search" placeholder="songs" aria-label="search" data-ng-model="songField">
+        <button class="col-1 btn btn-outline-success mt-0 mr-1 border-0 text-light" type="submit" data-ng-click="srchSongs()"><span class="oi oi-magnifying-glass"></span></button>
+    </form>
+
+</div>
+<div class="container mt-2">
+    <p class="lead text-primary">Your search is: <span class="bg-primary text-white">{{countryField + " " + songField}}</span></p>
+</div>
+<div class="container mt-5">
+
+    <div class="row justify-content-between">
+
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3 flex-fill song-wrap" ng-repeat="songs in songsData">
+
+            <hr class="mb-2 song-space-line">
+
+            <picture>
+                <img class="img-fluid rounded" src="{{songs.artworkUrl100}}" alt="AlbumImage">
+                <p class="mb-0">{{songs.trackName}}</p>
+                <a class="text-secondary mb-0" ui-sref="artists" ui-sref-active="active"><small class="artists-link">{{songs.artistName}}</small></a>
+            </picture>
+
+            <hr class="mt-2 song-space-line">
+
+        </div>
+    </div>
+</div>
