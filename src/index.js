@@ -20,7 +20,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
     const homeState = {
         name: 'home',
-        url: '/home',
+        url: '/',
         templateUrl: './home/home.html',
         controller: homeCtrl
     }
