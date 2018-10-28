@@ -102,7 +102,7 @@ module.exports = (function makeWebpackConfig() {
         contentBase: './src',
         stats: 'minimal',
         watchContentBase: true,
-        port: 4000,
+        port: process.env.PORT || 4000,
         watch: true,
         watchOptions: {
             poll: true
