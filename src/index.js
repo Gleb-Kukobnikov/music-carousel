@@ -43,5 +43,5 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     $stateProvider.state(aboutState);
     $stateProvider.state(artistsState);
 
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/');
 }]);
