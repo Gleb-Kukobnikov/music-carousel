@@ -29,7 +29,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         name: 'artists',
         url: '/artists',
         templateUrl: './artists/artists.html',
-        controller: artistsCtrl
+        controller: artistsCtrl,
+        params: {
+            loadArtistName: "flume"
+        }
     }
 
     const aboutState = {

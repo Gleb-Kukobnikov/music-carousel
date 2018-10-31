@@ -55,7 +55,7 @@
             <picture>
                 <img class="img-fluid rounded" src="{{y.artworkUrl100}}" alt="AlbumImage">
                 <p class="mb-0">{{y.trackName}}</p>
-                <a class=" text-secondary mb-0" ui-sref="artists" ui-sref-active="active"><small class="artists-link">{{y.artistName}}</small></a>
+                <a class=" text-secondary mb-0" ui-sref="artists({loadArtistName: y.artistName})" ui-sref-active="active"><small class="artists-link">{{y.artistName}}</small></a>
             </picture>
 
             <hr class="mt-2 text-secondary song-space-line">
