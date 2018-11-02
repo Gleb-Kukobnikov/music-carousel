@@ -43,25 +43,44 @@
 <div class="container mt-2 ">
     <p class="lead text-primary">Your search is:<span class="bg-primary text-white">{{" "+countryField + " " + songField}}</span> </p>
 </div>
-
+<!--
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="i" ng-class="{active:!$index}" ng-repeate="i in limit"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            -->
 <div class="container mt-5">
-
     <div class="row justify-content-between">
 
         <div class="col-12 col-sm-6 col-md-3 col-lg-3 flex-fill song-wrap" ng-repeat="y in songsData">
 
-            <hr class="mb-2 text-secondary song-space-line">
+            <hr class="mb-3 text-secondary song-space-line">
 
             <picture>
                 <img class="img-fluid rounded" src="{{y.artworkUrl100}}" alt="AlbumImage">
-                <p class="mb-0">{{y.trackName}}</p>
+                <p class="mb-0 mt-1"><small>{{y.trackName}}</small></p>
                 <a class=" text-secondary mb-0" ui-sref="artists({loadArtistName: y.artistName})" ui-sref-active="active"><small class="artists-link">{{y.artistName}}</small></a>
             </picture>
 
-            <hr class="mt-2 text-secondary song-space-line">
+            <hr class="mt-3 text-secondary song-space-line">
 
         </div>
 
     </div>
 
 </div>
+<!--
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+-->

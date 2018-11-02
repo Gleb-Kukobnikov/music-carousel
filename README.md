@@ -1,4 +1,4 @@
-<h1>Music search app made on AngularJS and Itunes API</h1>
+<h1>Music search app made on AngularJS and iTunes Search API</h1>
 <p>Here's the options that's available now:</p>
 <ul>
   <li>Search by country applestore</li>

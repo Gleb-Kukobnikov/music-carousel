@@ -3,36 +3,37 @@
     <form class="form-inline ">
         <input class="form-control col-3" type="search" placeholder="artists" aria-label="search" data-ng-model="artistName">
         <button class="col-1 btn btn-outline-success mt-0 mr-1 border-0 text-light" type="submit" data-ng-click="srchAlbums()"><span class="oi oi-magnifying-glass"></span></button>
+
     </form>
+
 
 </div>
 <div class="container mt-2">
-    <p class="lead text-primary">Your search is: <span class="bg-primary text-white">{{artistName}}</span></p>
+    <h3 class="artists-link">{{albumsData[0].artistName}}</h3>
+    <h5 class="text-secondary"><small>{{albumsData[0].primaryGenreName}}</small></h5>
 </div>
-<div class="container mt-2">
+<div class="container mt-1">
 
     <div class="row">
 
-        <div class="col flex-fill song-wrap mt-5" ng-repeat="albums in albumsData">
+        <div class="col flex-fill song-wrap mb-4" ng-repeat="albums in albumsData">
 
-            <hr class="mb-2 song-space-line">
+            <hr class="mb-3 song-space-line">
 
             <figure>
+
                 <img class="img-fluid rounded" src="{{albums.artworkUrl100}}" alt="AlbumImage">
-                <div class="text-wrap text-right float-right">
-                    <p class="mt-1 mb-0">{{albums.collectionName}}</p>
-                    <p class="mt-1 mb-0">Album price:{{albums.collectionPrice}}$</p>
-                    <p class="mt-1 mb-0">Track count:{{albums.trackCount}}</p>
-                    <p class="mt-1 mb-0">Release date:{{albums.releaseDate.slice(0,10)}}</p>
+                <div class="text-wrap text-right float-right text-secondary ">
+                    <p class="mt-0.5 mb-0 text-white d-none d-sm-block"><small>{{albums.collectionName}}</small></p>
+                    <p class="artist-name-text mt-0.5 mb-0 text-white d-block d-sm-none"><small>{{albums.collectionName}}</small></p>
+                    <p class="mt-0.5 mb-0 "><small>Album price: {{albums.collectionPrice}}$</small></p>
+                    <p class="mt-0.5 mb-0 "><small>Track count: {{albums.trackCount}}</small></p>
+                    <p class="mt-0.5 mb-0 "><small>Release date: {{albums.releaseDate.slice(0,10)}}</small></p>
                 </div>
-                <figcaption class="figure-caption">
-                    <a class="text-secondary mb-0 " ui-sref="artists" ui-sref-active="active">
-                        <span class="artists-link">{{albums.artistName}}</span>
-                    </a>
-                </figcaption>
+
             </figure>
 
-            <hr class="mt-2 song-space-line">
+            <hr class="mt-4 song-space-line">
 
         </div>
     </div>

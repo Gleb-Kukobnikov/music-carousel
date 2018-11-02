@@ -2,6 +2,7 @@ import angular from 'angular';
 import ngRouter from 'angular-route';
 import uiRouter from 'angular-ui-router';
 import './style/app.scss';
+import $ from 'jquery';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import './style/open-iconic-bootstrap.scss';
