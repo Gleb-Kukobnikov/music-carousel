@@ -25,4 +25,32 @@
 
 body {
     background-color: rgb(32, 33, 36)!important;
+    .prev,
+    .next {
+        font-size: 2rem;
+    }
+}
+
+.animation {
+    .ng-enter {
+        -webkit-transition: all 0.8s ease;
+        -moz-transition: all 0.8s ease;
+        -ms-transition: all 0.8s ease;
+        -o-transition: all 0.8s ease;
+        transition: all 0.8s ease;
+        -webkit-transform: translateX(20px);
+        -moz-transform: translateX(20px);
+        -ms-transform: translateX(20px);
+        -o-transform: translateX(20px);
+        transform: translateX(20px);
+        opacity: 0;
+    }
+    .ng-enter.ng-enter-active {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -ms-transform: translateX(0);
+        -o-transform: translateX(0);
+        transform: translateX(0);
+    }
 }

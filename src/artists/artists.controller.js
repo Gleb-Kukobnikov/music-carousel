@@ -7,15 +7,11 @@ export default function($scope, $http, $stateParams) {
         $scope.srchAlbums()
     }
 
-
-
     $scope.srchAlbums = () => {
 
-        if ($scope.artistName != undefined) {
-
+        if ($scope.artistName) {
             $scope.itunesUrl = "https://itunes.apple.com/search?term=" + $scope.artistName + "&entity=album&lang=en_us";
-
-        }
+        };
 
         $http.get($scope.itunesUrl).
         then((response) => {

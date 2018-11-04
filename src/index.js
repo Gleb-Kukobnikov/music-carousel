@@ -1,8 +1,8 @@
 import angular from 'angular';
 import ngRouter from 'angular-route';
 import uiRouter from 'angular-ui-router';
+import ngAnimate from 'angular-animate';
 import './style/app.scss';
-import $ from 'jquery';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import './style/open-iconic-bootstrap.scss';
@@ -14,7 +14,8 @@ import artistsCtrl from './artists/artists.controller.js';
 
 const app = angular.module('App', [
     uiRouter,
-    ngRouter
+    ngRouter,
+    ngAnimate
 ]);
 
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
@@ -23,7 +24,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         name: 'home',
         url: '/',
         templateUrl: './home/home.html',
-        controller: homeCtrl
+        controller: homeCtrl,
+        params: {
+            loadName: "flume"
+        }
     }
 
     const artistsState = {
