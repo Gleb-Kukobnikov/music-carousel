@@ -9,8 +9,9 @@ export default function($scope, $http, $stateParams) {
     $scope.onloadFun = () => {
 
         $scope.itunesUrl = "https://itunes.apple.com/search?term=" + $stateParams.loadName + "&entity=song&lang=en_us&limit=" + $scope.limit;
-
+        $scope.songField = "flume";
         $scope.srchSongs();
+
     }
 
     $scope.srchCountry = () => {
@@ -23,7 +24,6 @@ export default function($scope, $http, $stateParams) {
         }, (response) => {
             window.alert("Возникла ошибка: " + response.status)
         })
-
     }
 
     $scope.srchCountry();
@@ -36,10 +36,10 @@ export default function($scope, $http, $stateParams) {
             $scope.itunesUrl = $scope.itunesUrl = "https://itunes.apple.com/search?term=" + $scope.songField + "&entity=song&lang=en_us&limit=16";
         }
 
-        if ($scope.countryField != undefined) {
+        if ($scope.countryField) {
             $scope.itunesUrl = $scope.itunesUrl + "&country=" + $scope.countryField.code;
         }
-        if ($scope.songLimit != undefined) {
+        if ($scope.songLimit) {
             $scope.itunesUrl = $scope.itunesUrl + "&limit=" + ($scope.songLimit * 4);
         }
 
@@ -49,13 +49,13 @@ export default function($scope, $http, $stateParams) {
             $scope.songsData = response.data.results;
             $scope.slidesArr = $scope.songsData;
             $scope.currentSlide = $scope.slidesArr.slice(0, 4);
+
         }, (response) => {
             window.alert("Возникла ошибка: " + response.status)
         })
     }
 
     $scope.slideIndex = 0;
-
 
     $scope.changeSlide = (i) => {
 

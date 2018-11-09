@@ -1,31 +1,39 @@
-<div class="container mt-4" ng-init="onloadFun()">
+<div class="container mt-2" ng-init="onloadFun()">
 
-    <form class="form-inline ">
-        <input class="form-control col-3" type="search" placeholder="artists" aria-label="search" data-ng-model="artistName">
-        <button class="col-1 btn btn-outline-success mt-0 mr-1 border-0 text-light" type="submit" data-ng-click="srchAlbums()"><span class="oi oi-magnifying-glass"></span></button>
+    <div class="row align-items-baseline">
 
-    </form>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 ">
+            <h5 class="ml-2 artists-link">{{albumsData[0].artistName}}<span class="ml-1 text-secondary">{{albumsData[0].primaryGenreName}}</span></h5>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+            <form class="form-inline">
+                <input class="form-control col-3" type="search" placeholder="artists" aria-label="search" data-ng-model="artistName">
+                <button class="col-1 btn btn-outline-success mt-0 mr-1 border-0 text-light" type="submit" data-ng-click="srchAlbums()"><span class="oi oi-magnifying-glass"></span></button>
+            </form>
+        </div>
+
+    </div>
+
+
 
 
 </div>
-<div class="container mt-2">
-    <h3 class="artists-link">{{albumsData[0].artistName}}</h3>
-    <h5 class="text-secondary"><small>{{albumsData[0].primaryGenreName}}</small></h5>
-</div>
-<div class="container mt-1">
+
+<div class="container mt-1 mb-5">
 
     <div class="row">
 
-        <div class="col flex-fill song-wrap mb-4" ng-repeat="albums in albumsData">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6  song-wrap" ng-repeat="albums in pagesInfo.data">
 
-            <hr class="mb-3 song-space-line">
+            <hr class="mb-2 song-space-line">
 
             <figure>
 
-                <img class="img-fluid rounded" src="{{albums.artworkUrl100}}" alt="AlbumImage">
-                <div class="text-wrap text-right float-right text-secondary ">
-                    <p class="mt-0.5 mb-0 text-white d-none d-sm-block"><small>{{albums.collectionName}}</small></p>
-                    <p class="artist-name-text mt-0.5 mb-0 text-white d-block d-sm-none"><small>{{albums.collectionName}}</small></p>
+                <img class="img-fluid float-left mr-3" src="{{albums.artworkUrl100}}" alt="AlbumImage">
+                <div class="text-wrap text-left text-secondary">
+                    <p class="text-truncate mt-0.5 mb-0 text-white d-none d-sm-block"><small>{{albums.collectionName}}</small></p>
+                    <p class="d-inline-block text-truncate mt-0.5 mb-0 artist-name-text text-white d-block d-sm-none" style="max-width:165px;"><small>{{albums.collectionName}}</small></p>
                     <p class="mt-0.5 mb-0 "><small>Album price: {{albums.collectionPrice}}$</small></p>
                     <p class="mt-0.5 mb-0 "><small>Track count: {{albums.trackCount}}</small></p>
                     <p class="mt-0.5 mb-0 "><small>Release date: {{albums.releaseDate.slice(0,10)}}</small></p>
@@ -37,4 +45,21 @@
 
         </div>
     </div>
-</div>
+
+    <div class="btn-toolbar justify-content-center align-items-center" role="toolbar" aria-label="Toolbar with button groups">
+
+        <a class="prev text-white btn" ng-click="changeNums(-5)">
+            &#10094
+            </a>
+
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <button type="button" class="btn btn-primary" ng-repeat="pageIndex in pagesInfo.perPage" ng-click="setPage(pageIndex)">{{pageIndex + 1}}</button>
+        </div>
+
+        <a class=" next text-white btn" ng-click="changeNums(+5)">
+            &#10095
+            </a>
+
+
+    </div>
+    <p class="lead text-white text-center">Displaying {{pagesInfo.currentPage + 1}} page of {{pagesInfo.pagesCount[0]}}</p>
