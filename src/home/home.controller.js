@@ -6,7 +6,7 @@ export default function($scope, $http, $stateParams) {
 
     $scope.slidesArr = [];
 
-    $scope.onloadFun = () => {
+    this.$onInit = () => {
 
         $scope.itunesUrl = "https://itunes.apple.com/search?term=" + $stateParams.loadName + "&entity=song&lang=en_us&limit=" + $scope.limit;
         $scope.songField = "flume";
@@ -24,13 +24,12 @@ export default function($scope, $http, $stateParams) {
         }, (response) => {
             window.alert("Возникла ошибка: " + response.status)
         })
+
     }
 
     $scope.srchCountry();
 
     $scope.srchSongs = () => {
-
-        $scope.slidesArr.length = 0;
 
         if ($scope.songField) {
             $scope.itunesUrl = $scope.itunesUrl = "https://itunes.apple.com/search?term=" + $scope.songField + "&entity=song&lang=en_us&limit=16";
@@ -63,10 +62,11 @@ export default function($scope, $http, $stateParams) {
 
         //check if exits arr
         if ($scope.slideIndex < 0) {
-            $scope.slideIndex = ($scope.slidesArr.length / 4) - 1;
-        }
-        if ($scope.slideIndex > ($scope.slidesArr.length / 4) - 1) {
             $scope.slideIndex = 0;
+        }
+
+        if ($scope.slideIndex > ($scope.slidesArr.length / 4) - 1) {
+            $scope.slideIndex = ($scope.slidesArr.length / 4) - 1;
         }
 
         //clearing slides arr

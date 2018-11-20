@@ -4,10 +4,10 @@ export default function($scope, $http, $stateParams) {
 
     $scope.pagesCount = [];
 
-    $scope.onloadFun = () => {
+    this.$onInit = () => {
 
         $scope.itunesUrl = "https://itunes.apple.com/search?term=" + $stateParams.loadArtistName + "&entity=album&lang=en_us";
-        $scope.artistName = ' flume';
+        $scope.artistName = 'flume';
         $scope.srchAlbums();
 
     }
@@ -36,7 +36,6 @@ export default function($scope, $http, $stateParams) {
             $scope.setPage(0);
 
 
-
         }, (response) => {
 
             window.alert("Возникла ошибка: " + response.status);
@@ -46,48 +45,40 @@ export default function($scope, $http, $stateParams) {
 
     $scope.pagesInfo = {
         currentPage: 1,
-        perPage: [],
+        perPage: [0, 1, 2, 3, 4],
         pagesCount: $scope.pagesCount,
         data: []
     }
 
-
     $scope.setPage = (pageIndex) => {
 
-        $scope.pagesInfo.currentPage = pageIndex;
+        if (pageIndex < $scope.pagesInfo.pagesCount && pageIndex >= 0) {
 
-        for (let i = 0; i < 5; i++) {
-            $scope.pagesInfo.perPage.push(pageIndex + i);
+            $scope.pagesInfo.currentPage = pageIndex;
+
+            $scope.pagesInfo.data = $scope.pagesData.slice($scope.pagesInfo.currentPage * 4, ($scope.pagesInfo.currentPage * 4) + 4);
         }
 
-        $scope.pagesInfo.data.length = 0;
-
-        $scope.pagesInfo.data = $scope.pagesData.slice($scope.pagesInfo.currentPage * 4, ($scope.pagesInfo.currentPage * 4) + 4);
     }
 
     $scope.changeNums = (num) => {
 
-        $scope.pagesInfo.perPage.length = 0;
+        //$scope.pagesInfo.currentPage += num;
 
-        for (let i = 0; i < 5; i++) {
-            $scope.pagesInfo.perPage.push(i + num);
-        }
-
-        while ($scope.pagesCount <= $scope.pagesInfo.perPage[$scope.pagesInfo.perPage.length - 1]) {
-
-            $scope.pagesInfo.perPage.pop();
-
-        }
-
-        while ($scope.pagesInfo.perPage[0] < 0) {
-
-            $scope.pagesInfo.perPage.length = 0;
-
+        if ($scope.pagesInfo.perPage[0] <= $scope.pagesCount - 5 && $scope.pagesInfo.perPage[0] > -1) {
             for (let i = 0; i < 5; i++) {
-                $scope.pagesInfo.perPage.push(i);
+
+
+                $scope.pagesInfo.perPage[i] += num;
+
             }
         }
 
+        if ($scope.pagesInfo.perPage[4] > $scope.pagesInfo.pagesCount - 1) {
+
+            $scope.pagesInfo.currentPage = $scope.pagesInfo.pagesCount - 1;
+
+        }
 
     }
 };

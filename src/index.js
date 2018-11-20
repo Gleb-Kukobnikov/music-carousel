@@ -11,7 +11,6 @@ import homeCtrl from './home/home.controller.js';
 import artistsCtrl from './artists/artists.controller.js';
 
 
-
 const app = angular.module('App', [
     uiRouter,
     ngRouter,

@@ -1,14 +1,10 @@
-<div class="container mt-4 " ng-init="onloadFun()">
+<div class="container mt-2 " ng-init="onloadFun()">
 
     <div class="form-row ">
 
-        <div class="col col-md">
+        <div class="mr-0 col-4 col-md-6 col-lg-6">
 
-            <select class="form-control" ng-model="countryField" ng-options="selectCountry.name for selectCountry in countryName"></select>
-
-        </div>
-
-        <div class="col col-md">
+            <p class="mt-0 mb-0 text-left text-secondary"><small>search songs</small></p>
 
             <form class="form-inline">
                 <input class="form-control col-7" type="search" placeholder="songs" aria-label="Search" data-ng-model="songField">
@@ -17,14 +13,20 @@
 
         </div>
 
-        <div class="col  col-md">
+        <div class="ml-0 col-4 col-md-3 col-lg-3">
+            <p class="mt-0 mb-0 text-left text-secondary"><small>select country</small></p>
+
+            <select class="form-control" ng-model="countryField" ng-options="selectCountry.name for selectCountry in countryName"></select>
+
+        </div>
+
+        <div class="col-4 col-md-3 col-lg-3">
+            <p class="mt-0 mb-0 text-left text-secondary"><small>choose limit</small></p>
 
             <form>
 
                 <select class="form-control" ng-model="songLimit">
-                        <option value="" selected disabled>limit</option>
-                        <option value="1">1</option>
-                        <option value="4">4</option>
+                        <option value="" selected>4</option>
                         <option value="8">8</option>
                         <option value="12">12</option>
                         <option value="16">16</option>

@@ -1,4 +1,4 @@
-<div class="container mt-2" ng-init="onloadFun()">
+<div class="container mt-2">
 
     <div class="row align-items-baseline">
 
@@ -22,9 +22,9 @@
 
 <div class="container mt-1 mb-5">
 
-    <div class="row">
+    <div class="animation row">
 
-        <div class="col-12 col-sm-12 col-md-6 col-lg-6  song-wrap" ng-repeat="albums in pagesInfo.data">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6  song-wrap " ng-repeat="albums in pagesInfo.data">
 
             <hr class="mb-2 song-space-line">
 
@@ -46,20 +46,20 @@
         </div>
     </div>
 
-    <div class="btn-toolbar justify-content-center align-items-center" role="toolbar" aria-label="Toolbar with button groups">
+    <div class=" btn-toolbar justify-content-center align-items-center" role="toolbar" aria-label="Toolbar with button groups">
 
-        <a class="prev text-white btn" ng-click="changeNums(-5)">
+        <a class="prev text-white btn" ng-click="changeNums(-1)" ng-hide="pagesInfo.perPage[0] == 0">
             &#10094
             </a>
 
         <div class="btn-group mr-2" role="group" aria-label="First group">
-            <button type="button" class="btn btn-primary" ng-repeat="pageIndex in pagesInfo.perPage" ng-click="setPage(pageIndex)">{{pageIndex + 1}}</button>
+            <button type="button" class="btn btn-primary " ng-repeat="pageIndex in pagesInfo.perPage" ng-click="setPage(pageIndex)">{{pageIndex + 1}}</button>
         </div>
 
-        <a class=" next text-white btn" ng-click="changeNums(+5)">
+        <a class=" next text-white btn" ng-click="changeNums(+1)" ng-hide="pagesInfo.perPage[4] == pagesCount - 1">
             &#10095
             </a>
 
 
     </div>
-    <p class="lead text-white text-center">Displaying {{pagesInfo.currentPage + 1}} page of {{pagesInfo.pagesCount[0]}}</p>
+    <p class="lead text-white text-center">Displaying {{pagesInfo.currentPage+1}} page of {{pagesInfo.pagesCount[0]}}</p>
