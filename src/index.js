@@ -9,6 +9,7 @@ import './style/open-iconic-bootstrap.scss';
 import 'popper.js';
 import homeCtrl from './home/home.controller.js';
 import artistsCtrl from './artists/artists.controller.js';
+import countryServiceFile from './services/countryService.js';
 
 
 const app = angular.module('App', [
@@ -24,6 +25,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         url: '/',
         templateUrl: './home/home.html',
         controller: homeCtrl,
+        resolve: {
+            countryFactory: countryServiceFile
+        },
         params: {
             loadName: "flume"
         }

@@ -1,4 +1,4 @@
-export default function($scope, $http, $stateParams) {
+export default function($scope, $log, $http, $stateParams, countryFactory) {
 
     $scope.limit = 16;
 
@@ -14,20 +14,7 @@ export default function($scope, $http, $stateParams) {
 
     }
 
-    $scope.srchCountry = () => {
-
-        $scope.url = "../data/countries.json";
-
-        $http.get($scope.url).
-        then((response) => {
-            $scope.countryName = response.data;
-        }, (response) => {
-            window.alert("Возникла ошибка: " + response.status)
-        })
-
-    }
-
-    $scope.srchCountry();
+    $scope.countryName = countryFactory.data;
 
     $scope.srchSongs = () => {
 
