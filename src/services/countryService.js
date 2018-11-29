@@ -1,7 +1,18 @@
 export default function($http) {
 
-    let url = "../data/countries.json";
+    let fileUrl = './data/countries.json';
 
-    return $http({ method: 'GET', url: url });
+    let obj = {
+
+        getData: (callback) => {
+
+            $http({ method: 'GET', url: fileUrl }).then((response) => {
+                callback(response.data);
+            })
+        }
+
+    };
+
+    return obj;
 
 };

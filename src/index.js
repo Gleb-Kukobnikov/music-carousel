@@ -10,6 +10,8 @@ import 'popper.js';
 import homeCtrl from './home/home.controller.js';
 import artistsCtrl from './artists/artists.controller.js';
 import countryServiceFile from './services/countryService.js';
+import searchSongServiceFile from './services/searchSongService.js';
+import albumServiceFile from './services/searchAlbumService.js';
 
 
 const app = angular.module('App', [
@@ -26,7 +28,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         templateUrl: './home/home.html',
         controller: homeCtrl,
         resolve: {
-            countryFactory: countryServiceFile
+            countryFactory: countryServiceFile,
+            songFactory: searchSongServiceFile
         },
         params: {
             loadName: "flume"
@@ -38,6 +41,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         url: '/artists',
         templateUrl: './artists/artists.html',
         controller: artistsCtrl,
+        resolve: {
+            albumFactory: albumServiceFile
+        },
         params: {
             loadArtistName: "flume"
         }

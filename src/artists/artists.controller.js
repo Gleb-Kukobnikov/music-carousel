@@ -1,13 +1,16 @@
-export default function($scope, $http, $stateParams) {
+export default function($scope, $http, $stateParams, albumFactory) {
+
+    let itunesUrl;
 
     $scope.pagesData = [];
 
     $scope.pagesCount = [];
 
     this.$onInit = () => {
+        if ($stateParams.loadArtistName) {
+            $scope.artistName = $stateParams.loadArtistName;
+        } else $scope.artistName = 'flume';
 
-        $scope.itunesUrl = "https://itunes.apple.com/search?term=" + $stateParams.loadArtistName + "&entity=album&lang=en_us";
-        $scope.artistName = 'flume';
         $scope.srchAlbums();
 
     }
@@ -15,13 +18,12 @@ export default function($scope, $http, $stateParams) {
     $scope.srchAlbums = () => {
 
         if ($scope.artistName) {
-            $scope.itunesUrl = "https://itunes.apple.com/search?term=" + $scope.artistName + "&entity=album&lang=en_us";
+            itunesUrl = "https://itunes.apple.com/search?term=" + $scope.artistName + "&entity=album&lang=en_us";
         };
 
-        $http.get($scope.itunesUrl).
-        then((response) => {
+        albumFactory.getData(itunesUrl, (data) => {
 
-            $scope.albumsData = response.data.results;
+            $scope.albumsData = data.results;
 
             $scope.pagesData.length = 0;
 
@@ -35,12 +37,8 @@ export default function($scope, $http, $stateParams) {
 
             $scope.setPage(0);
 
-
-        }, (response) => {
-
-            window.alert("Возникла ошибка: " + response.status);
-
         })
+
     }
 
     $scope.pagesInfo = {
@@ -63,11 +61,9 @@ export default function($scope, $http, $stateParams) {
 
     $scope.changeNums = (num) => {
 
-        //$scope.pagesInfo.currentPage += num;
-
         if ($scope.pagesInfo.perPage[0] <= $scope.pagesCount - 5 && $scope.pagesInfo.perPage[0] > -1) {
-            for (let i = 0; i < 5; i++) {
 
+            for (let i = 0; i < 5; i++) {
 
                 $scope.pagesInfo.perPage[i] += num;
 

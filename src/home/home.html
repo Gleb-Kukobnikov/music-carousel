@@ -7,20 +7,19 @@
             <p class="mt-0 mb-0 text-left text-secondary"><small>search songs</small></p>
 
             <form class="form-inline">
-                <input class="form-control col-7" type="search" placeholder="songs" aria-label="Search" ng-model="songField" ng-model-options="{ debounce: 300 }" ng-change="srchSongs()">
-                <button class="btn btn-outline-success  col-3 border-0 text-light" type="submit"><span class="oi oi-magnifying-glass mr-1"></span></button>
+                <input class="form-control col-7" type="search" placeholder="songs" aria-label="Search" ng-model="songField" ng-model-options="{ debounce: 200 }" ng-change="srchSongs()">
             </form>
 
         </div>
 
-        <div class="ml-0 col-4 col-md-3 col-lg-3">
+        <div class="ml-0 col-4 col-md-2 col-lg-3">
             <p class="mt-0 mb-0 text-left text-secondary"><small>select country</small></p>
 
             <select class="form-control" ng-model="countryField" ng-options="selectCountry.name for selectCountry in countryName" ng-change="srchSongs()"></select>
 
         </div>
 
-        <div class="col-4 col-md-3 col-lg-3">
+        <div class="col-4 col-md-2 col-lg-2">
             <p class="mt-0 mb-0 text-left text-secondary"><small>choose limit</small></p>
 
             <form>
@@ -41,7 +40,7 @@
 </div>
 
 <div class="container mt-2 ">
-    <p class="lead text-primary">Your search is:<span class="bg-primary text-white">{{" "+ countryField.name + " " + currentSlide[0].artistName}}</span> </p>
+    <p class="lead text-primary">Your search is:<span class="bg-primary text-white">{{songField}}</span> </p>
 </div>
 <div class="container">
 
@@ -72,4 +71,4 @@
     </div>
 
 </div>
-<p class="lead text-white text-center">Displaying {{slideIndex + 1}} {{" of " + slidesArr.length/4}}</p>
+<p class="lead text-white text-center">Displaying {{slideIndex + 1}} {{" of " + totalSlides}}</p>
