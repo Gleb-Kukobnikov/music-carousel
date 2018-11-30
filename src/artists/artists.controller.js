@@ -1,4 +1,4 @@
-export default function($scope, $http, $stateParams, albumFactory) {
+export default function($scope, $stateParams, albumFactory) {
 
     let itunesUrl;
 

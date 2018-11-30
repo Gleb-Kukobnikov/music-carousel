@@ -1,0 +1,26 @@
+<a class="float-left mt-4 prev text-white btn" ng-click="changeSlide(-1)">
+      &#10094
+      </a>
+
+
+<a class="float-right mt-4 next text-white btn" ng-click="changeSlide(+1)">
+      &#10095
+      </a>
+
+
+
+<div class="row animation justify-content-between">
+
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6  song-wrap mb-4 text-center" ng-repeat="slide in currentSlide">
+
+        <picture>
+
+            <img class="float-left rounded mr-3" src="{{slide.artworkUrl100}}" alt="AlbumImage">
+            <p class="mb-0 mt-1  text-left text-truncate"><small>{{slide.trackName}}</small></p>
+            <p class="text-left"><a class=" text-secondary mb-0" ui-sref="artists({loadArtistName: slide.artistName})" ui-sref-active="active"><small class="artists-link">{{slide.artistName}}</small></a></p>
+
+        </picture>
+
+    </div>
+
+</div>

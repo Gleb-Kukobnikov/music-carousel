@@ -56,9 +56,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
     }
 
-    $stateProvider.state(homeState);
-    $stateProvider.state(aboutState);
-    $stateProvider.state(artistsState);
+    $stateProvider.state(homeState).state(aboutState).state(artistsState);
 
     $urlRouterProvider.otherwise('/');
 }]);

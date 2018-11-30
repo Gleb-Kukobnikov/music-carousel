@@ -1,4 +1,4 @@
-export default function($scope, $http, $stateParams, countryFactory, songFactory) {
+export default function($scope, countryFactory, songFactory) {
 
     $scope.limit = 16;
 
