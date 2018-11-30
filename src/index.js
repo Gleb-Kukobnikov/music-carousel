@@ -56,7 +56,13 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
     }
 
-    $stateProvider.state(homeState).state(aboutState).state(artistsState);
+    $stateProvider.state(homeState, {
+        views: {
+            "counter": {
+                template: '<p class="lead text-white text-center ">Displaying {{slideIndex + 1}} {{" of " + totalSlides}}</p>'
+            }
+        }
+    }).state(aboutState).state(artistsState);
 
     $urlRouterProvider.otherwise('/');
 }]);
