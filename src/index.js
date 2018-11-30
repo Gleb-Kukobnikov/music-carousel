@@ -10,9 +10,11 @@ import 'popper.js';
 import homeCtrl from './home/home.controller.js';
 import artistsCtrl from './artists/artists.controller.js';
 import countryServiceFile from './services/countryService.js';
-import searchSongServiceFile from './services/searchSongService.js';
+import songServiceFile from './services/searchSongService.js';
 import albumServiceFile from './services/searchAlbumService.js';
-
+import songDir from './directives/song.wrap.directive.js';
+import headerDir from './directives/header.directive.js';
+import pageCounterDir from './directives/page.counter.directive.js';
 
 const app = angular.module('App', [
     uiRouter,
@@ -22,47 +24,45 @@ const app = angular.module('App', [
 
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
-    const homeState = {
-        name: 'home',
-        url: '/',
-        templateUrl: './home/home.html',
-        controller: homeCtrl,
-        resolve: {
-            countryFactory: countryServiceFile,
-            songFactory: searchSongServiceFile
-        },
-        params: {
-            loadName: "flume"
-        }
-    }
-
-    const artistsState = {
-        name: 'artists',
-        url: '/artists',
-        templateUrl: './artists/artists.html',
-        controller: artistsCtrl,
-        resolve: {
-            albumFactory: albumServiceFile
-        },
-        params: {
-            loadArtistName: "flume"
-        }
-    }
-
-    const aboutState = {
-        name: 'about',
-        url: '/about',
-        templateUrl: './about/about.html'
-
-    }
-
-    $stateProvider.state(homeState, {
-        views: {
-            "counter": {
-                template: '<p class="lead text-white text-center ">Displaying {{slideIndex + 1}} {{" of " + totalSlides}}</p>'
+        const homeState = {
+            name: 'home',
+            url: '/',
+            templateUrl: './home/home.html',
+            controller: homeCtrl,
+            params: {
+                loadName: "flume"
             }
         }
-    }).state(aboutState).state(artistsState);
 
-    $urlRouterProvider.otherwise('/');
-}]);
+        const artistsState = {
+
+            name: 'artists',
+            url: '/artists',
+            templateUrl: './artists/artists.html',
+            controller: artistsCtrl,
+            params: {
+                loadArtistName: "flume"
+            }
+
+        }
+
+        const aboutState = {
+
+            name: 'about',
+            url: '/about',
+            templateUrl: './about/about.html'
+
+        }
+
+        $stateProvider.state(homeState).state(aboutState).state(artistsState);
+
+        $urlRouterProvider.otherwise('/');
+    }])
+    .service('countryFactory', countryServiceFile)
+    .service('songFactory', songServiceFile)
+    .service('albumFactory', albumServiceFile)
+    .directive('songWrap', songDir)
+    .directive('header', headerDir)
+    .directive('pageCounter', pageCounterDir)
+
+;

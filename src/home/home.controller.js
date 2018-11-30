@@ -15,33 +15,15 @@ export default function($scope, countryFactory, songFactory) {
 
     }
 
-    countryFactory.getData((data) => {
-        $scope.countryName = data;
+    countryFactory.getData().then((response) => {
+        $scope.countryName = response.data;
     });
 
     $scope.srchSongs = () => {
 
-        if ($scope.songField) {
+        songFactory.getData($scope.songField, $scope.countryField, $scope.songLimit).then((response) => {
 
-            itunesUrl = "https://itunes.apple.com/search?term=" + $scope.songField + "&entity=song&lang=en_us&limit=" + $scope.limit;
-
-        }
-
-        if ($scope.countryField) {
-
-            itunesUrl = itunesUrl + "&country=" + $scope.countryField.code;
-
-        }
-
-        if ($scope.songLimit) {
-
-            itunesUrl = itunesUrl + "&limit=" + ($scope.songLimit * 4);
-
-        }
-
-        songFactory.getData(itunesUrl, (data) => {
-
-            $scope.songsData = data.results;
+            $scope.songsData = response.data.results;
             $scope.slidesArr = $scope.songsData;
             $scope.currentSlide = $scope.slidesArr.slice(0, 4);
             $scope.totalSlides = Math.ceil($scope.slidesArr.length / 4);
@@ -52,7 +34,6 @@ export default function($scope, countryFactory, songFactory) {
     }
 
     $scope.slideIndex = 0;
-
 
     $scope.changeSlide = (i) => {
 

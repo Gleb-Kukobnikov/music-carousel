@@ -4,11 +4,9 @@ export default function($http) {
 
     let obj = {
 
-        getData: (callback) => {
+        getData: () => {
 
-            $http({ method: 'GET', url: fileUrl }).then((response) => {
-                callback(response.data);
-            })
+            return $http({ method: 'GET', url: fileUrl })
         }
 
     };
