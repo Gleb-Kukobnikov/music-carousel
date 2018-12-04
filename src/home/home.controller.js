@@ -6,8 +6,6 @@ export default function($scope, countryFactory, songFactory) {
 
     $scope.slidesArr = [];
 
-    let itunesUrl;
-
     this.$onInit = () => {
 
         $scope.songField = "flume";
