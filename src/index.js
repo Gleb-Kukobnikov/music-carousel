@@ -63,6 +63,4 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     .service('albumFactory', albumServiceFile)
     .directive('songWrap', songDir)
     .directive('header', headerDir)
-    .directive('pageCounter', pageCounterDir)
-
-;
+    .directive('pageCounter', pageCounterDir);
